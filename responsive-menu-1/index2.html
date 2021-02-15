@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="styles2.css">
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+        ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h4>The Nav</h4>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Content</a></li>
+            <li><a href="#login">Login</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <script>
+
+        window.addEventListener('click', (event) => {
+            const burger = document.querySelector(".burger");
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+            const clickOnMenu = event.target.classList.contains('burger') || 
+                    (event.target.parentNode.classList && event.target.parentNode.classList.contains('burger'));
+            const isMenuOpen = nav.classList.contains('nav-active');
+
+            if (clickOnMenu || isMenuOpen) {
+                nav.classList.toggle('nav-active');
+                burger.classList.toggle('toggle');
+
+                navLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    }
+                    else {
+                        link.style.animation = `navLinkFade 0.2s ease forwards ${index / 7 + 0.3}s`
+                    }
+                });
+            }
+        });
+    </script>
+    <div class="content">Hello</div>
+</body>
+</html>
